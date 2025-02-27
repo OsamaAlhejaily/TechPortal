@@ -1,0 +1,22 @@
+<h2>@ViewData["Title"]</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @foreach (var job in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body" style="background-color: gold;">
+                    <h5 class="card-title">@job.title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@job.companyName</h6>
+                    <p class="card-text">
+                        <strong>Location:</strong> @job.location <br>
+                        <strong>Job Type:</strong> @job.Jt <br>
+                        <strong>Posted:</strong> @job.PostedDate.ToShortDateString()
+                    </p>
+<a href="@Url.Action("Details", "Job", new { id = job.id })" class="btn" style="background-color: cyan; color: black; border: none;">
+    View Details
+</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

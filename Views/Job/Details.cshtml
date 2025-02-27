@@ -1,0 +1,29 @@
+<h2>Job Details</h2>
+<div class="card mb-4" style="background-color: gold;">
+    <div class="card-body">
+        <h4 class="card-title">@Model.title</h4>
+        <h5 class="card-subtitle mb-2 text-muted">@Model.companyName</h5>
+        <p class="card-text">
+            <strong>Location:</strong> @Model.location <br>
+            <strong>Job Type:</strong>
+
+            <select class="form-select" name="Jt">
+                @foreach (var jobType in (IEnumerable<JobType>)ViewBag.JobTypes)
+                {
+                    @if (jobType.Equals(Model.Jt))
+                    {
+                        <option value="@jobType" selected="selected">@jobType</option>
+                    }
+                    else
+                    {
+                        <option value="@jobType">@jobType</option>
+                    }
+                }
+            </select>
+
+            <br>
+            <strong>Posted Date:</strong> @Model.PostedDate.ToShortDateString()
+        </p>
+        <a class="btn btn-primary text-muted" style ="background-color: cyan;" href="@Url.Action("Index", "Job")">Back to Job List</a>
+    </div>
+</div>
